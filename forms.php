@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Admin Template</title>
-    <meta name="author" content="David Grzyb">
+    <title>Futchampions Dashboard</title>
+    <meta name="author" content="AbdeljalilElouafi">
     <meta name="description" content="">
 
     <!-- Tailwind -->
@@ -13,6 +13,7 @@
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
         .font-family-karla { font-family: karla; }
         .bg-sidebar { background: #3d68ff; }
+        .bg-form { background:rgba(255, 255, 255, 0.93) }
         .cta-btn { color: #3d68ff; }
         .upgrade-btn { background: #1947ee; }
         .upgrade-btn:hover { background: #0038fd; }
@@ -122,76 +123,153 @@
                 <h1 class="w-full text-3xl text-black pb-6">Forms</h1>
 
                 <div class="flex flex-wrap">
-                    <div class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2">
-                        <p class="text-xl pb-6 flex items-center">
-                            <i class="fas fa-list mr-3"></i> Contact Form
-                        </p>
-                        <div class="leading-loose">
-                            <form class="p-10 bg-white rounded shadow-xl">
-                                <div class="">
-                                    <label class="block text-sm text-gray-600" for="name">Name</label>
-                                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="name" name="name" type="text" required="" placeholder="Your Name" aria-label="Name">
-                                </div>
-                                <div class="mt-2">
-                                    <label class="block text-sm text-gray-600" for="email">Email</label>
-                                    <input class="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" id="email" name="email" type="text" required="" placeholder="Your Email" aria-label="Email">
-                                </div>
-                                <div class="mt-2">
-                                    <label class=" block text-sm text-gray-600" for="message">Message</label>
-                                    <textarea class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded" id="message" name="message" rows="6" required="" placeholder="Your inquiry.." aria-label="Email"></textarea>
-                                </div>
-                                <div class="mt-6">
-                                    <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
 
-                    <div class="w-full lg:w-1/2 mt-6 pl-0 lg:pl-2">
-                        <p class="text-xl pb-6 flex items-center">
-                            <i class="fas fa-list mr-3"></i> Checkout Form
-                        </p>
-                        <div class="leading-loose">
-                            <form class="p-10 bg-white rounded shadow-xl">
-                                <p class="text-lg text-gray-800 font-medium pb-4">Customer information</p>
-                                <div class="">
-                                    <label class="block text-sm text-gray-600" for="cus_name">Name</label>
-                                    <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="cus_name" name="cus_name" type="text" required="" placeholder="Your Name" aria-label="Name">
-                                </div>
-                                <div class="mt-2">
-                                    <label class="block text-sm text-gray-600" for="cus_email">Email</label>
-                                    <input class="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email" type="text" required="" placeholder="Your Email" aria-label="Email">
-                                </div>
-                                <div class="mt-2">
-                                    <label class=" block text-sm text-gray-600" for="cus_email">Address</label>
-                                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email" type="text" required="" placeholder="Street" aria-label="Email">
-                                </div>
-                                <div class="mt-2">
-                                    <label class="hidden text-sm block text-gray-600" for="cus_email">City</label>
-                                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email" type="text" required="" placeholder="City" aria-label="Email">
-                                </div>
-                                <div class="inline-block mt-2 w-1/2 pr-1">
-                                    <label class="hidden block text-sm text-gray-600" for="cus_email">Country</label>
-                                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email" type="text" required="" placeholder="Country" aria-label="Email">
-                                </div>
-                                <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                                    <label class="hidden block text-sm text-gray-600" for="cus_email">Zip</label>
-                                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email"  name="cus_email" type="text" required="" placeholder="Zip" aria-label="Email">
-                                </div>
-                                <p class="text-lg text-gray-800 font-medium py-4">Payment information</p>
-                                <div class="">
-                                    <label class="block text-sm text-gray-600" for="cus_name">Card</label>
-                                    <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_name" name="cus_name" type="text" required="" placeholder="Card Number MM/YY CVC" aria-label="Name">
-                                </div>
-                                <div class="mt-6">
-                                    <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">$3.00</button>
-                                </div>
-                            </form>
-                        </div>
-                        <p class="pt-6 text-gray-600">
-                            Source: <a class="underline" href="https://tailwindcomponents.com/component/checkout-form">https://tailwindcomponents.com/component/checkout-form</a>
-                        </p>
+            <div class="form-container w-1/2 mx-auto max-h-screen overflow-y-scroll bg-gradiant-to-r bg-form to-transparent p-8 rounded shadow-lg">
+            <form id="playerForm">
+                <!-- Name, Photo, Nationality, Flag, Club, Logo, Rating Inputs -->
+                <div class="mb-4">
+                    <label for="name" class="block text-black font-medium">Name</label>
+                    <input type="text" id="name" name="name" class="w-full p-1 border border-gray-300 rounded" required>
+                    <p id="nameError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid name.</p>
+                </div>
+                <div class="mb-4">
+                    <label for="photo" class="block text-black font-medium">Photo URL</label>
+                    <input type="url" id="photo" name="photo" class="w-full p-1 border border-gray-300 rounded" required>
+                    <p id="photoError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid url.</p>
+                </div>
+                <div class="mb-4">
+                    <label for="nationality" class="block text-black font-medium">Nationality</label>
+                    <input type="text" id="nationality" name="nationality" class="w-full p-1 border border-gray-300 rounded" required>
+                    <p id="nationalityError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid nationality.</p>
+                </div>
+                <div class="mb-4">
+                    <label for="flag" class="block text-black font-medium">Flag URL</label>
+                    <input type="url" id="flag" name="flag" class="w-full p-1 border border-gray-300 rounded" required>
+                    <p id="flagError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid url.</p>
+                </div>
+                <div class="mb-4">
+                    <label for="club" class="block text-black font-medium">Club</label>
+                    <input type="text" id="club" name="club" class="w-full p-1 border border-gray-300 rounded" required>
+                    <p id="clubError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid club.</p>
+                </div>
+                <div class="mb-4">
+                    <label for="logo" class="block text-black font-medium">Club Logo URL</label>
+                    <input type="url" id="logo" name="logo" class="w-full p-1 border border-gray-300 rounded" required>
+                    <p id="logoError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid url.</p>
+                </div>
+                <div class="mb-4">
+                    <label for="rating" class="block text-black font-medium">Rating</label>
+                    <input type="number" id="rating" name="rating" min="0" max="100" class="w-full p-1 border border-gray-300 rounded" required>
+                    <p id="ratingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid rating.</p>
+                </div>
+        
+                
+                
+                <div class="mb-4">
+                    <label for="position" class="block text-black font-medium">Position</label>
+                    <select id="position" name="position" class="w-full p-1 border border-gray-300 rounded" required>
+                        <option value="CB">CB</option>
+                        <option value="RCB">RCB</option>
+                        <option value="LB">LB</option>
+                        <option value="RB">RB</option>
+                        <option value="CM">CM</option>
+                        <option value="LM">LM</option>
+                        <option value="RM">RM</option>
+                        <option value="LW">LW</option>
+                        <option value="RW">RW</option>
+                        <option value="ST">ST</option>
+                        <option value="GK">GK</option>
+                    </select>
+                </div>
+        
+                
+                <!-- Player Stats for All Positions -->
+                <div id="playerStats" class="mb-4 flex flex-wrap space-x-4">
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="pace" class="block text-black font-medium">Pace</label>
+                        <input type="number" id="pace" name="pace" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <p id="paceError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid pace.</p>
                     </div>
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="shooting" class="block text-black font-medium">Shooting</label>
+                        <input type="number" id="shooting" name="shooting" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <p id="shootingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid shooting.</p>
+                    </div>
+                </div>
+        
+                
+                <div id="playerStats2" class="mb-4 flex flex-wrap space-x-4">
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="passing" class="block text-black font-medium">Passing</label>
+                        <input type="number" id="passing" name="passing" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <p id="passingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid passing.</p>
+                    </div>
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="dribbling" class="block text-black font-medium">Dribbling</label>
+                        <input type="number" id="dribbling" name="dribbling" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <p id="dribblingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid dribbling.</p>
+                    </div>
+                </div>
+        
+                
+                <div id="playerStats3" class="mb-4 flex flex-wrap space-x-4">
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="defending" class="block text-black font-medium">Defending</label>
+                        <input type="number" id="defending" name="defending" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <p id="defendingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid defending.</p>
+                    </div>
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="physical" class="block text-black font-medium">Physical</label>
+                        <input type="number" id="physical" name="physical" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <p id="physicalError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid physical.</p>
+                    </div>
+                </div>
+        
+                
+                <!-- Goalkeeper Specific Stats (Hidden by Default) -->
+                <div id="gkStats" class="hidden mb-4 flex flex-wrap space-x-4">
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="diving" class="block text-black font-medium">Diving</label>
+                        <input type="number" id="diving" name="diving" min="10" max="99" class="w-full p-1 border border-gray-300 rounded">
+                        <p id="divingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid diving.</p>
+                    </div>
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="handling" class="block text-black font-medium">Handling</label>
+                        <input type="number" id="handling" name="handling" min="10" max="99" class="w-full p-1 border border-gray-300 rounded">
+                        <p id="handlingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid handling.</p>
+                    </div>
+                </div>    
+                <div id="gkStats2" class="hidden mb-4 flex flex-wrap space-x-4">
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="kicking" class="block text-black font-medium">Kicking</label>
+                        <input type="number" id="kicking" name="kicking" min="10" max="99" class="w-full p-1 border border-gray-300 rounded">
+                        <p id="kickingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid kicking.</p>
+                    </div>
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="reflexes" class="block text-black font-medium">Reflexes</label>
+                        <input type="number" id="reflexes" name="reflexes" min="10" max="99" class="w-full p-1 border border-gray-300 rounded">
+                        <p id="reflexesError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid reflexes.</p>
+                    </div>
+                </div>    
+                <div id="gkStats3" class="hidden mb-4 flex flex-wrap space-x-4">
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="speed" class="block text-black font-medium">Speed</label>
+                        <input type="number" id="speed" name="speed" min="10" max="99" class="w-full p-1 border border-gray-300 rounded">
+                        <p id="speedError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid speed.</p>
+                    </div>
+                    <div class="flex flex-col w-1/3 mb-4">
+                        <label for="positioning" class="block text-black font-medium">Positioning</label>
+                        <input type="number" id="positioning" name="positioning" min="10" max="99" class="w-full p-1 border border-gray-300 rounded">
+                        <p id="positioningError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid positioning.</p>
+                    </div>
+                </div>
+        
+                
+                <div class="mb-6 text-center">
+                    <button type="submit" id="submit-btn" class="bg-black text-white p-2 rounded hover:bg-gray-400 p-2" >submit</button>
+                </div>
+            </form>
+        </div>
                 </div>
             </main>
     
