@@ -24,7 +24,39 @@
  $successMessage="";
 
  if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
-    
+ $p_name= $_POST["name"];
+ $p_position= $_POST["position"];
+ $p_rating= $_POST["rating"];
+
+   do {
+    if ( empty($p_name) || empty($p_position) || empty($p_rating)){
+        $errorMessage="All the fields are required!";
+        break;
+    }
+
+
+    $sql="INSERT INTO players (player_name, player_position, rating)" .
+         "VALUES ('$p_name', '$p_position', '$p_rating')";
+
+    $result = $conn->query($sql);
+
+    if (!$result) {
+        $errorMessage="Invalid query: " . $conn->error;
+        break;
+    }
+
+
+    $p_name="";
+    $p_position="";
+    $p_rating="";
+
+    $successMessage="Player added successfully!";
+
+    header("location: /futchampions_BackEnd_Brief/index.php");
+    exit;
+
+   } while (false); 
+
  }
 
 
@@ -160,11 +192,11 @@
                 <div class="flex flex-wrap">
 
             <div class="form-container w-1/2 mx-auto max-h-screen overflow-y-scroll bg-gradiant-to-r bg-form to-transparent p-8 rounded shadow-lg">
-            <form id="playerForm">
+            <form id="playerForm" method="post">
                 <!-- Name, Photo, Nationality, Flag, Club, Logo, Rating Inputs -->
                 <div class="mb-4">
                     <label for="name" class="block text-black font-medium">Name</label>
-                    <input type="text" id="name" name="name" class="w-full p-1 border border-gray-300 rounded" required>
+                    <input value="<?php echo $p_name; ?>" type="text" id="name" name="name" class="w-full p-1 border border-gray-300 rounded" required>
                     <p id="nameError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid name.</p>
                 </div>
                 <div class="mb-4">
@@ -194,7 +226,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="rating" class="block text-black font-medium">Rating</label>
-                    <input type="number" id="rating" name="rating" min="0" max="100" class="w-full p-1 border border-gray-300 rounded" required>
+                    <input value="<?php echo $p_rating; ?>" type="number" id="rating" name="rating" min="0" max="100" class="w-full p-1 border border-gray-300 rounded" required>
                     <p id="ratingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid rating.</p>
                 </div>
         
@@ -202,7 +234,7 @@
                 
                 <div class="mb-4">
                     <label for="position" class="block text-black font-medium">Position</label>
-                    <select id="position" name="position" class="w-full p-1 border border-gray-300 rounded" required>
+                    <select value="<?php echo $p_position; ?>" id="position" name="position" class="w-full p-1 border border-gray-300 rounded" required>
                         <option value="CB">CB</option>
                         <option value="RCB">RCB</option>
                         <option value="LB">LB</option>
@@ -302,6 +334,7 @@
                 
                 <div class="mb-6 text-center">
                     <button type="submit" id="submit-btn" class="bg-black text-white p-2 rounded hover:bg-gray-400 p-2" >submit</button>
+                    <a href="index.php" class="bg-red-500 text-white p-2 rounded hover:bg-red-600 p-2" >cancel</a>
                 </div>
             </form>
         </div>
