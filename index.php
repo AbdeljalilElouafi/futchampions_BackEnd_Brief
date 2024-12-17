@@ -128,10 +128,16 @@
                         <table class="min-w-full bg-white">
                             <thead class="bg-gray-800 text-white ">
                                 <tr>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                                    <th class="w-1/8 text-left py-3 px-4 uppercase font-semibold text-sm">Player ID</th>
+                                    <th class="w-1/8 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Position</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">rating</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">pace</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">shooting</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">passing</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">dribbling</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">defending</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">physical</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm"></th>
                                 </tr>
                             </thead>
@@ -171,10 +177,16 @@ if (!$result) {
 while ($row = $result->fetch_assoc()) {
     echo "
     <tr>
-        <td class='w-1/3 text-left py-3 px-4'>{$row['player_id']}</td>
-        <td class='w-1/3 text-left py-3 px-4'>{$row['player_name']}</td>
+        <td class='w-1/6 text-left py-3 px-4'>{$row['player_id']}</td>
+        <td class='w-1/6 text-left py-3 px-4'>{$row['player_name']}</td>
         <td class='text-left py-3 px-4'>{$row['player_position']}</td>
         <td class='text-left py-3 px-4'>{$row['rating']}</td>
+        <td class='text-left py-3 px-4'>{$row['pace']}</td>
+        <td class='text-left py-3 px-4'>{$row['shooting']}</td>
+        <td class='text-left py-3 px-4'>{$row['passing']}</td>
+        <td class='text-left py-3 px-4'>{$row['dribbling']}</td>
+        <td class='text-left py-3 px-4'>{$row['defending']}</td>
+        <td class='text-left py-3 px-4'>{$row['physical']}</td>
         <td class='flex'>
                 <a href='/futchampions_BackEnd_Brief/edit.php?id={$row['player_id']}' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'>Edit</a>
                 <a href='/futchampions_BackEnd_Brief/delete.php?id={$row['player_id']}' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>Delete</a>
@@ -187,7 +199,7 @@ while ($row = $result->fetch_assoc()) {
                             ?>
 
 
-                                <tr>
+                                <!-- <tr>
                                     <td class="w-1/3 text-left py-3 px-4">Lian</td>
                                     <td class="w-1/3 text-left py-3 px-4">Smith</td>
                                     <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
@@ -196,7 +208,7 @@ while ($row = $result->fetch_assoc()) {
                                     <button type="submit" class="mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Edit</button>
                                     <button type="submit" class="mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">delete</button>
                                     </td>
-                                </tr>
+                                </tr> -->
                                
                             </tbody>
                         </table>

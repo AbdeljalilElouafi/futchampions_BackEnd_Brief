@@ -55,7 +55,7 @@
     header("location: /futchampions_BackEnd_Brief/index.php");
     exit;
 
-   } while (false); 
+   } while (false);
 
  }
 
