@@ -126,38 +126,65 @@
                     </p>
                     <div class="bg-white overflow-auto">
                         <table class="min-w-full bg-white">
-                            <thead class="bg-gray-800 text-white">
+                            <thead class="bg-gray-800 text-white ">
                                 <tr>
                                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
                                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Last name</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Email</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm"></th>
                                 </tr>
                             </thead>
                             <tbody class="text-gray-700">
 
                             <?php
-                                 // Database credentials
-                                 $servername = "localhost";
-                                 $username = "root";
-                                 $password = "";
-                                 $database = "futchampions_db";
 
-                                 // Create connection
-                                 $conn = mysqli_connect($servername, $username, $password, $database);
+                               // Database credentials
+                               $servername = "localhost";
+                               $username = "root";
+                               $password = "";
+                               $database = "futchampions_db";
 
-                                 // Check connection
-                                 if (!$conn) {
-                                     die("Connection failed: " . mysqli_connect_error());
-                                 }
+                               // Create connection
+                               $conn = mysqli_connect($servername, $username, $password, $database);
 
-                                 // Set the character set to UTF-8 for proper encoding
-                                 mysqli_set_charset($conn, "utf8");
+                               // Check connection
+                               if (!$conn) {
+                                   die("Connection failed: " . mysqli_connect_error());
+                               }
 
-                                 echo "Connected successfully";
+                               // Set the character set to UTF-8 for proper encoding
+                               mysqli_set_charset($conn, "utf8");
 
-                               ?>
+                               
+                                
+                                // Read all rows from the database table
+$sql = "SELECT * FROM players";
+$result = $conn->query($sql);
 
+// Check for query errors
+if (!$result) {
+    die("Invalid query: " . $conn->error);
+}
+
+// Loop through the results and output as table rows
+while ($row = $result->fetch_assoc()) {
+    echo "
+    <tr>
+        <td class='w-1/3 text-left py-3 px-4'>{$row['player_id']}</td>
+        <td class='w-1/3 text-left py-3 px-4'>{$row['player_name']}</td>
+        <td class='text-left py-3 px-4'>{$row['player_position']}</td>
+        <td class='text-left py-3 px-4'>{$row['rating']}</td>
+        <td class='flex'>
+                <button type='submit' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'>Edit</button>
+                <button type='submit' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>delete</button>
+          </td>
+    </tr>
+    ";
+}
+
+
+                            ?>
 
 
                                 <tr>
@@ -165,49 +192,12 @@
                                     <td class="w-1/3 text-left py-3 px-4">Smith</td>
                                     <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
                                     <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                    <td class="flex">
+                                    <button type="submit" class="mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Edit</button>
+                                    <button type="submit" class="mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">delete</button>
+                                    </td>
                                 </tr>
-                                <!-- <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr> -->
+                               
                             </tbody>
                         </table>
                     </div>
