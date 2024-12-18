@@ -83,12 +83,12 @@
             <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
                 <a href="index.php" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
                     <i class="fas fa-tachometer-alt mr-3"></i>
-                    Dashboard
+                    Players
                 </a>
                 
-                <a href="tables.php" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <a href="field.php" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-table mr-3"></i>
-                    Tables
+                    Field
                 </a>
                 <a href="forms.php" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-align-left mr-3"></i>
