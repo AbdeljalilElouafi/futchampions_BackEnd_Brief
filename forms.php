@@ -19,6 +19,13 @@
  $p_name="";
  $p_position="";
  $p_rating="";
+ $p_pace="";
+ $p_shooting="";
+ $p_passing="";
+ $p_dribbling="";
+ $p_defending="";
+ $p_physical="";
+ 
 
  $errorMessage="";
  $successMessage="";
@@ -27,16 +34,22 @@
  $p_name= $_POST["name"];
  $p_position= $_POST["position"];
  $p_rating= $_POST["rating"];
+ $p_pace= $_POST["pace"];
+ $p_shooting= $_POST["shooting"];
+ $p_passing= $_POST["passing"];
+ $p_dribbling= $_POST["dribbling"];
+ $p_defending= $_POST["defending"];
+ $p_physical= $_POST["physical"];
 
    do {
-    if ( empty($p_name) || empty($p_position) || empty($p_rating)){
+    if ( empty($p_name) || empty($p_position) || empty($p_rating) || empty($p_pace) || empty( $p_shooting) || empty( $p_passing) || empty( $p_dribbling) || empty( $p_defending)|| empty( $p_physical)){
         $errorMessage="All the fields are required!";
         break;
     }
 
 
-    $sql="INSERT INTO players (player_name, player_position, rating)" .
-         "VALUES ('$p_name', '$p_position', '$p_rating')";
+    $sql="INSERT INTO players (player_name, player_position, rating, pace, shooting, passing, dribbling, defending, physical)" .
+         "VALUES ('$p_name', '$p_position', '$p_rating',  '$p_pace', ' $p_shooting', ' $p_passing', ' $p_dribbling', ' $p_defending', ' $p_physical')";
 
     $result = $conn->query($sql);
 
@@ -49,6 +62,12 @@
     $p_name="";
     $p_position="";
     $p_rating="";
+    $p_pace="";
+    $p_shooting="";
+    $p_passing="";
+    $p_dribbling="";
+    $p_defending="";
+    $p_physical="";
 
     $successMessage="Player added successfully!";
 
@@ -200,9 +219,9 @@
                     <p id="nameError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid name.</p>
                 </div>
                 <div class="mb-4">
-                    <label for="photo" class="block text-black font-medium">Photo URL</label>
-                    <input type="url" id="photo" name="photo" class="w-full p-1 border border-gray-300 rounded" required>
-                    <p id="photoError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid url.</p>
+                    <label for="photo" class="block text-black font-medium">Player Photo</label>
+                    <input id="photo" name="photo" class="w-full p-1 border border-gray-300 rounded" type="file" accept=".jpg, .png, .jpeg, .webp" required />
+                    <p id="photoError" class="text-red-500 text-xs mt-1 hidden">Please choose a photo</p>
                 </div>
                 <div class="mb-4">
                     <label for="nationality" class="block text-black font-medium">Nationality</label>
@@ -254,12 +273,12 @@
                 <div id="playerStats" class="mb-4 flex flex-wrap space-x-4">
                     <div class="flex flex-col w-1/3 mb-4">
                         <label for="pace" class="block text-black font-medium">Pace</label>
-                        <input type="number" id="pace" name="pace" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <input value="<?php echo  $p_pace; ?>" type="number" id="pace" name="pace" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
                         <p id="paceError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid pace.</p>
                     </div>
                     <div class="flex flex-col w-1/3 mb-4">
                         <label for="shooting" class="block text-black font-medium">Shooting</label>
-                        <input type="number" id="shooting" name="shooting" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <input value="<?php echo  $p_shooting; ?>" type="number" id="shooting" name="shooting" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
                         <p id="shootingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid shooting.</p>
                     </div>
                 </div>
@@ -268,12 +287,12 @@
                 <div id="playerStats2" class="mb-4 flex flex-wrap space-x-4">
                     <div class="flex flex-col w-1/3 mb-4">
                         <label for="passing" class="block text-black font-medium">Passing</label>
-                        <input type="number" id="passing" name="passing" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <input value="<?php echo  $p_passing; ?>" type="number" id="passing" name="passing" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
                         <p id="passingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid passing.</p>
                     </div>
                     <div class="flex flex-col w-1/3 mb-4">
                         <label for="dribbling" class="block text-black font-medium">Dribbling</label>
-                        <input type="number" id="dribbling" name="dribbling" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <input value="<?php echo  $p_dribbling; ?>" type="number" id="dribbling" name="dribbling" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
                         <p id="dribblingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid dribbling.</p>
                     </div>
                 </div>
@@ -282,12 +301,12 @@
                 <div id="playerStats3" class="mb-4 flex flex-wrap space-x-4">
                     <div class="flex flex-col w-1/3 mb-4">
                         <label for="defending" class="block text-black font-medium">Defending</label>
-                        <input type="number" id="defending" name="defending" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <input value="<?php echo  $p_defending; ?>" type="number" id="defending" name="defending" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
                         <p id="defendingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid defending.</p>
                     </div>
                     <div class="flex flex-col w-1/3 mb-4">
                         <label for="physical" class="block text-black font-medium">Physical</label>
-                        <input type="number" id="physical" name="physical" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
+                        <input value="<?php echo  $p_physical; ?>" type="number" id="physical" name="physical" min="10" max="99" class="w-full p-1 border border-gray-300 rounded" required>
                         <p id="physicalError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid physical.</p>
                     </div>
                 </div>

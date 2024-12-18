@@ -122,7 +122,7 @@
     
                 <div class="w-full mt-12">
                     <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-list mr-3"></i> Latest Reports
+                        <i class="fas fa-list mr-3"></i> Players
                     </p>
                     <div class="bg-white overflow-auto">
                         <table class="min-w-full bg-white">
@@ -165,35 +165,35 @@
                                
                                 
                                 // Read all rows from the database table
-$sql = "SELECT * FROM players";
-$result = $conn->query($sql);
+                                    $sql = "SELECT * FROM players";
+                                    $result = $conn->query($sql);
 
-// Check for query errors
-if (!$result) {
-    die("Invalid query: " . $conn->error);
-}
+                                    // Check for query errors
+                                    if (!$result) {
+                                        die("Invalid query: " . $conn->error);
+                                    }
 
-// Loop through the results and output as table rows
-while ($row = $result->fetch_assoc()) {
-    echo "
-    <tr>
-        <td class='w-1/6 text-left py-3 px-4'>{$row['player_id']}</td>
-        <td class='w-1/6 text-left py-3 px-4'>{$row['player_name']}</td>
-        <td class='text-left py-3 px-4'>{$row['player_position']}</td>
-        <td class='text-left py-3 px-4'>{$row['rating']}</td>
-        <td class='text-left py-3 px-4'>{$row['pace']}</td>
-        <td class='text-left py-3 px-4'>{$row['shooting']}</td>
-        <td class='text-left py-3 px-4'>{$row['passing']}</td>
-        <td class='text-left py-3 px-4'>{$row['dribbling']}</td>
-        <td class='text-left py-3 px-4'>{$row['defending']}</td>
-        <td class='text-left py-3 px-4'>{$row['physical']}</td>
-        <td class='flex'>
-                <a href='/futchampions_BackEnd_Brief/edit.php?id={$row['player_id']}' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'>Edit</a>
-                <a href='/futchampions_BackEnd_Brief/delete.php?id={$row['player_id']}' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>Delete</a>
-          </td>
-    </tr>
-    ";
-}
+                                    // Loop through the results and output as table rows
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "
+                                        <tr>
+                                            <td class='w-1/8 text-left py-3 px-4'>{$row['player_id']}</td>
+                                            <td class='w-1/8 text-left py-3 px-4'>{$row['player_name']}</td>
+                                            <td class='text-left py-3 px-4'>{$row['player_position']}</td>
+                                            <td class='text-left py-3 px-4'>{$row['rating']}</td>
+                                            <td class='text-left py-3 px-4'>{$row['pace']}</td>
+                                            <td class='text-left py-3 px-4'>{$row['shooting']}</td>
+                                            <td class='text-left py-3 px-4'>{$row['passing']}</td>
+                                            <td class='text-left py-3 px-4'>{$row['dribbling']}</td>
+                                            <td class='text-left py-3 px-4'>{$row['defending']}</td>
+                                            <td class='text-left py-3 px-4'>{$row['physical']}</td>
+                                            <td class='flex'>
+                                                    <a href='/futchampions_BackEnd_Brief/edit.php?id={$row['player_id']}' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'>Edit</a>
+                                                    <a href='/futchampions_BackEnd_Brief/delete.php?id={$row['player_id']}' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>Delete</a>
+                                            </td>
+                                        </tr>
+                                        ";
+                                    }
 
 
                             ?>
