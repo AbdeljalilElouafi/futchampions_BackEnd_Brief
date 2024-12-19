@@ -3,6 +3,8 @@
 require_once 'includes/functions.php';
 
 $players = display_players();
+$countries = display_countries();
+$clubs = display_clubs();
 
 ?>
 
@@ -135,7 +137,7 @@ $players = display_players();
                     <p class="text-xl pb-3 flex items-center">
                         <i class="fas fa-list mr-3"></i> Players
                     </p>
-                    <div class="bg-white overflow-auto">
+                    <div class="bg-white overflow-auto"> 
                         <table class="min-w-full bg-white">
                             <thead class="bg-gray-800 text-white ">
                                 <tr>
@@ -170,6 +172,100 @@ $players = display_players();
                                             <td class='flex'>
                                                     <a href='/futchampions_BackEnd_Brief/edit.php?id=<?=($row['player_id'])?>' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'>Edit</a>
                                                     <a href='/futchampions_BackEnd_Brief/delete.php?id=<?=($row['player_id'])?>' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>Delete</a>
+                                            </td>
+                                        </tr>
+                                        
+                                    
+                                    <?php endforeach; ?>
+
+
+                                <!-- <tr>
+                                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
+                                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                    <td class="flex">
+                                    <button type="submit" class="mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Edit</button>
+                                    <button type="submit" class="mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">delete</button>
+                                    </td>
+                                </tr> -->
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="w-full mt-12">
+                    <p class="text-xl pb-3 flex items-center">
+                        <i class="fas fa-list mr-3"></i> Countries
+                    </p>
+                    <div class="bg-white overflow-auto"> 
+                        <table class="min-w-full bg-white">
+                            <thead class="bg-gray-800 text-white ">
+                                <tr>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Country ID</th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Country</th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Flag</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+
+                            
+                         <?php    foreach( $countries as $row ) : ?>
+                                        <tr>
+                                            <td class='w-1/3 text-left py-3 px-4'><?=($row['country_id'])?></td>
+                                            <td class='w-1/3 text-left py-3 px-4'><?=($row['country_name'])?></td>
+                                            <td class='w-1/3 text-left py-3 px-4'><?=($row['flag_url'])?></td>
+                                            <td class='flex'>
+                                                    <a href='/futchampions_BackEnd_Brief/edit.php?id=<?=($row['country_id'])?>' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'>Edit</a>
+                                                    <a href='/futchampions_BackEnd_Brief/delete.php?id=<?=($row['country_id'])?>' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>Delete</a>
+                                            </td>
+                                        </tr>
+                                        
+                                    
+                                    <?php endforeach; ?>
+
+
+                                <!-- <tr>
+                                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
+                                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
+                                    <td class="flex">
+                                    <button type="submit" class="mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Edit</button>
+                                    <button type="submit" class="mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">delete</button>
+                                    </td>
+                                </tr> -->
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="w-full mt-12">
+                    <p class="text-xl pb-3 flex items-center">
+                        <i class="fas fa-list mr-3"></i> Clubs
+                    </p>
+                    <div class="bg-white overflow-auto"> 
+                        <table class="min-w-full bg-white">
+                            <thead class="bg-gray-800 text-white ">
+                                <tr>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Club ID</th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Club</th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Logo</th>
+                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+
+                            
+                         <?php    foreach( $clubs as $row ) : ?>
+                                        <tr>
+                                            <td class='w-1/8 text-left py-3 px-4'><?=($row['club_id'])?></td>
+                                            <td class='w-1/8 text-left py-3 px-4'><?=($row['club_name'])?></td>
+                                            <td class='w-1/8 text-left py-3 px-4'><?=($row['logo_url'])?></td>
+                                            <td class='flex'>
+                                                    <a href='/futchampions_BackEnd_Brief/edit.php?id=<?=($row['club_id'])?>' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'>Edit</a>
+                                                    <a href='/futchampions_BackEnd_Brief/delete.php?id=<?=($row['club_id'])?>' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>Delete</a>
                                             </td>
                                         </tr>
                                         

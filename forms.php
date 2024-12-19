@@ -25,7 +25,11 @@
  $p_dribbling="";
  $p_defending="";
  $p_physical="";
- 
+ $nationality="";
+ $flag="";
+ $club="";
+ $logo="";
+
 
  $errorMessage="";
  $successMessage="";
@@ -40,18 +44,28 @@
  $p_dribbling= $_POST["dribbling"];
  $p_defending= $_POST["defending"];
  $p_physical= $_POST["physical"];
+ $nationality= $_POST["nationality"];
+ $flag= $_POST["flag"];
+ $club= $_POST["club"];
+ $logo= $_POST["logo"];
 
    do {
-    if ( empty($p_name) || empty($p_position) || empty($p_rating) || empty($p_pace) || empty( $p_shooting) || empty( $p_passing) || empty( $p_dribbling) || empty( $p_defending)|| empty( $p_physical)){
+    if ( empty($p_name) || empty($p_position) || empty($p_rating) || empty($p_pace) || empty( $p_shooting) || empty( $p_passing) || empty( $p_dribbling) || empty( $p_defending)|| empty( $p_physical) || empty($nationality) || empty($flag) || empty($club) || empty($logo)){
         $errorMessage="All the fields are required!";
         break;
     }
 
 
-    $sql="INSERT INTO players (player_name, player_position, rating, pace, shooting, passing, dribbling, defending, physical)" .
-         "VALUES ('$p_name', '$p_position', '$p_rating',  '$p_pace', ' $p_shooting', ' $p_passing', ' $p_dribbling', ' $p_defending', ' $p_physical')";
+    $sql = "INSERT INTO players (player_name, player_position, rating, pace, shooting, passing, dribbling, defending, physical)
+        VALUES ('$p_name', '$p_position', '$p_rating', '$p_pace', '$p_shooting', '$p_passing', '$p_dribbling', '$p_defending', '$p_physical');
+        
+        INSERT INTO clubs (club_name, logo_url)
+        VALUES ('$club', '$logo');
+        
+        INSERT INTO countries (country_name, flag_url)
+        VALUES ('$nationality', '$flag');";
 
-    $result = $conn->query($sql);
+    $result = $conn->multi_query($sql);
 
     if (!$result) {
         $errorMessage="Invalid query: " . $conn->error;
@@ -68,6 +82,10 @@
     $p_dribbling="";
     $p_defending="";
     $p_physical="";
+    $nationality="";
+    $flag="";
+    $club="";
+    $logo="";
 
     $successMessage="Player added successfully!";
 
@@ -225,22 +243,22 @@
                 </div>
                 <div class="mb-4">
                     <label for="nationality" class="block text-black font-medium">Nationality</label>
-                    <input type="text" id="nationality" name="nationality" class="w-full p-1 border border-gray-300 rounded" required>
+                    <input value="<?php echo $nationality; ?>" type="text" id="nationality" name="nationality" class="w-full p-1 border border-gray-300 rounded" required>
                     <p id="nationalityError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid nationality.</p>
                 </div>
                 <div class="mb-4">
                     <label for="flag" class="block text-black font-medium">Flag URL</label>
-                    <input type="url" id="flag" name="flag" class="w-full p-1 border border-gray-300 rounded" required>
+                    <input value="<?php echo $flag; ?>" type="url" id="flag" name="flag" class="w-full p-1 border border-gray-300 rounded" required>
                     <p id="flagError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid url.</p>
                 </div>
                 <div class="mb-4">
                     <label for="club" class="block text-black font-medium">Club</label>
-                    <input type="text" id="club" name="club" class="w-full p-1 border border-gray-300 rounded" required>
+                    <input value="<?php echo $club; ?>" type="text" id="club" name="club" class="w-full p-1 border border-gray-300 rounded" required>
                     <p id="clubError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid club.</p>
                 </div>
                 <div class="mb-4">
                     <label for="logo" class="block text-black font-medium">Club Logo URL</label>
-                    <input type="url" id="logo" name="logo" class="w-full p-1 border border-gray-300 rounded" required>
+                    <input value="<?php echo $logo; ?>" type="url" id="logo" name="logo" class="w-full p-1 border border-gray-300 rounded" required>
                     <p id="logoError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid url.</p>
                 </div>
                 <div class="mb-4">
@@ -368,6 +386,7 @@
     </div>
 
     <!-- AlpineJS -->
+    <script src="./assets/js/script2.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
