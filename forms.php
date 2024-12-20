@@ -25,10 +25,7 @@
  $p_dribbling="";
  $p_defending="";
  $p_physical="";
- $nationality="";
- $flag="";
- $club="";
- $logo="";
+
 
 
  $errorMessage="";
@@ -44,28 +41,19 @@
  $p_dribbling= $_POST["dribbling"];
  $p_defending= $_POST["defending"];
  $p_physical= $_POST["physical"];
- $nationality= $_POST["nationality"];
- $flag= $_POST["flag"];
- $club= $_POST["club"];
- $logo= $_POST["logo"];
+
 
    do {
-    if ( empty($p_name) || empty($p_position) || empty($p_rating) || empty($p_pace) || empty( $p_shooting) || empty( $p_passing) || empty( $p_dribbling) || empty( $p_defending)|| empty( $p_physical) || empty($nationality) || empty($flag) || empty($club) || empty($logo)){
+    if ( empty($p_name) || empty($p_position) || empty($p_rating) || empty($p_pace) || empty( $p_shooting) || empty( $p_passing) || empty( $p_dribbling) || empty( $p_defending)|| empty( $p_physical) ){
         $errorMessage="All the fields are required!";
         break;
     }
 
 
     $sql = "INSERT INTO players (player_name, player_position, rating, pace, shooting, passing, dribbling, defending, physical)
-        VALUES ('$p_name', '$p_position', '$p_rating', '$p_pace', '$p_shooting', '$p_passing', '$p_dribbling', '$p_defending', '$p_physical');
-        
-        INSERT INTO clubs (club_name, logo_url)
-        VALUES ('$club', '$logo');
-        
-        INSERT INTO countries (country_name, flag_url)
-        VALUES ('$nationality', '$flag');";
+        VALUES ('$p_name', '$p_position', '$p_rating', '$p_pace', '$p_shooting', '$p_passing', '$p_dribbling', '$p_defending', '$p_physical');";
 
-    $result = $conn->multi_query($sql);
+    $result = $conn->query($sql);
 
     if (!$result) {
         $errorMessage="Invalid query: " . $conn->error;
@@ -82,10 +70,7 @@
     $p_dribbling="";
     $p_defending="";
     $p_physical="";
-    $nationality="";
-    $flag="";
-    $club="";
-    $logo="";
+
 
     $successMessage="Player added successfully!";
 
@@ -226,9 +211,9 @@
             <main class="w-full flex-grow p-6">
                 <h1 class="w-full text-3xl text-black pb-6">Forms</h1>
 
-                <div class="flex flex-wrap">
+             <div class="flex flex-col gap-y-20">
 
-            <div class="form-container w-1/2 mx-auto max-h-screen overflow-y-scroll bg-gradiant-to-r bg-form to-transparent p-8 rounded shadow-lg">
+            <div class="form-container w-1/3 mx-auto max-h-screen overflow-y-scroll bg-gradiant-to-r bg-form to-transparent p-8 rounded shadow-xl">
             <form id="playerForm" method="post">
                 <!-- Name, Photo, Nationality, Flag, Club, Logo, Rating Inputs -->
                 <div class="mb-4">
@@ -240,26 +225,6 @@
                     <label for="photo" class="block text-black font-medium">Player Photo</label>
                     <input id="photo" name="photo" class="w-full p-1 border border-gray-300 rounded" type="file" accept=".jpg, .png, .jpeg, .webp" required />
                     <p id="photoError" class="text-red-500 text-xs mt-1 hidden">Please choose a photo</p>
-                </div>
-                <div class="mb-4">
-                    <label for="nationality" class="block text-black font-medium">Nationality</label>
-                    <input value="<?php echo $nationality; ?>" type="text" id="nationality" name="nationality" class="w-full p-1 border border-gray-300 rounded" required>
-                    <p id="nationalityError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid nationality.</p>
-                </div>
-                <div class="mb-4">
-                    <label for="flag" class="block text-black font-medium">Flag URL</label>
-                    <input value="<?php echo $flag; ?>" type="url" id="flag" name="flag" class="w-full p-1 border border-gray-300 rounded" required>
-                    <p id="flagError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid url.</p>
-                </div>
-                <div class="mb-4">
-                    <label for="club" class="block text-black font-medium">Club</label>
-                    <input value="<?php echo $club; ?>" type="text" id="club" name="club" class="w-full p-1 border border-gray-300 rounded" required>
-                    <p id="clubError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid club.</p>
-                </div>
-                <div class="mb-4">
-                    <label for="logo" class="block text-black font-medium">Club Logo URL</label>
-                    <input value="<?php echo $logo; ?>" type="url" id="logo" name="logo" class="w-full p-1 border border-gray-300 rounded" required>
-                    <p id="logoError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid url.</p>
                 </div>
                 <div class="mb-4">
                     <label for="rating" class="block text-black font-medium">Rating</label>
@@ -374,7 +339,8 @@
                     <a href="index.php" class="bg-red-500 text-white p-2 rounded hover:bg-red-600 p-2" >cancel</a>
                 </div>
             </form>
-        </div>
+            </div>
+    
                 </div>
             </main>
     

@@ -55,7 +55,15 @@ $clubs = display_clubs();
             </a>
             <a href="forms.php" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-align-left mr-3"></i>
-                Forms
+                Player Form
+            </a>
+            <a href="nationalities.php" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-align-left mr-3"></i>
+                Nationality Form
+            </a>
+            <a href="clubs.php" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-align-left mr-3"></i>
+                Club Form
             </a>
             
         </nav>
