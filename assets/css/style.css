@@ -15,12 +15,14 @@ body {
     margin: 2rem;
     display: flex;
     justify-content:center;
+    justify-content: space-between;
 }
 
 .formation-field {
 
     padding-left: 0%;
     margin-right: 2rem;
+    margin-left: 2rem;
     box-sizing: border-box;
     width: 300rem;
     height: 110vh;

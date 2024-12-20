@@ -151,6 +151,7 @@ $clubs = display_clubs();
                                 <tr>
                                     <th class="w-1/8 text-left py-3 px-4 uppercase font-semibold text-sm">Player ID</th>
                                     <th class="w-1/8 text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+                                    <th class="w-1/8 text-left py-3 px-4 uppercase font-semibold text-sm">Photo</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Position</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">rating</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">pace</th>
@@ -169,6 +170,10 @@ $clubs = display_clubs();
                                         <tr>
                                             <td class='w-1/8 text-left py-3 px-4'><?=($row['player_id'])?></td>
                                             <td class='w-1/8 text-left py-3 px-4'><?=($row['player_name'])?></td>
+                                            <td class='w-1/8 text-left py-3 px-4'>
+                                            <img src="assets/img/25_120.webp"
+                                            class="rounded-full h-12 w-12"> 
+                                            </td>
                                             <td class='text-left py-3 px-4'><?=($row['player_position'])?></td>
                                             <td class='text-left py-3 px-4'><?=($row['rating'])?></td>
                                             <td class='text-left py-3 px-4'><?=($row['pace'])?></td>
@@ -223,8 +228,10 @@ $clubs = display_clubs();
                                         <tr>
                                             <td class='w-1/3 text-left py-3 px-4'><?=($row['country_id'])?></td>
                                             <td class='w-1/3 text-left py-3 px-4'><?=($row['country_name'])?></td>
-                                            <td class='w-1/3 text-left py-3 px-4'><?=($row['flag_url'])?></td>
-                                            <td class='flex'>
+                                            <td class='w-1/8 text-left py-3 px-4'>
+                                            <img src="assets/img/ar.webp"
+                                            class="rounded-full h-8 w-8"> 
+                                            </td>                                            <td class='flex'>
                                                     <a href='/futchampions_BackEnd_Brief/edit.php?id=<?=($row['country_id'])?>' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'>Edit</a>
                                                     <a href='/futchampions_BackEnd_Brief/delete.php?id=<?=($row['country_id'])?>' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>Delete</a>
                                             </td>
@@ -270,8 +277,10 @@ $clubs = display_clubs();
                                         <tr>
                                             <td class='w-1/8 text-left py-3 px-4'><?=($row['club_id'])?></td>
                                             <td class='w-1/8 text-left py-3 px-4'><?=($row['club_name'])?></td>
-                                            <td class='w-1/8 text-left py-3 px-4'><?=($row['logo_url'])?></td>
-                                            <td class='flex'>
+                                            <td class='w-1/8 text-left py-3 px-4'>
+                                            <img src="assets/img/120.webp"
+                                            class="rounded-full h-8 w-8"> 
+                                            </td>                                            <td class='flex'>
                                                     <a href='/futchampions_BackEnd_Brief/edit.php?id=<?=($row['club_id'])?>' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2'>Edit</a>
                                                     <a href='/futchampions_BackEnd_Brief/delete.php?id=<?=($row['club_id'])?>' class='mt-10 flex w-10 items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>Delete</a>
                                             </td>

@@ -1,20 +1,9 @@
 <?php
- // Database credentials
- $servername = "localhost";
- $username = "root";
- $password = "";
- $database = "futchampions_db";
 
- // Create connection
- $conn = mysqli_connect($servername, $username, $password, $database);
+require_once __DIR__ . '/config/db.php';
 
- // Check connection
- if (!$conn) {
-     die("Connection failed: " . mysqli_connect_error());
- }
+$conn = connect_db();
 
- // Set the character set to UTF-8 for proper encoding
- mysqli_set_charset($conn, "utf8");
 
  $p_name="";
  $p_position="";

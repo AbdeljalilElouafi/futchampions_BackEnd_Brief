@@ -1,23 +1,10 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "futchampions_db";
+require_once __DIR__ . '/config/db.php';
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-// Set the character set to UTF-8 for proper encoding
-mysqli_set_charset($conn, "utf8");
+$conn = connect_db();
 
 
-// countries create
 $nationality="";
 $flag="";
 

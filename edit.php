@@ -240,26 +240,6 @@ else {
                     <p id="photoError" class="text-red-500 text-xs mt-1 hidden">Please choose a photo</p>
                 </div>
                 <div class="mb-4">
-                    <label for="nationality" class="block text-black font-medium">Nationality</label>
-                    <input type="text" id="nationality" name="nationality" class="w-full p-1 border border-gray-300 rounded" required>
-                    <p id="nationalityError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid nationality.</p>
-                </div>
-                <div class="mb-4">
-                    <label for="flag" class="block text-black font-medium">Flag URL</label>
-                    <input type="url" id="flag" name="flag" class="w-full p-1 border border-gray-300 rounded" required>
-                    <p id="flagError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid url.</p>
-                </div>
-                <div class="mb-4">
-                    <label for="club" class="block text-black font-medium">Club</label>
-                    <input type="text" id="club" name="club" class="w-full p-1 border border-gray-300 rounded" required>
-                    <p id="clubError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid club.</p>
-                </div>
-                <div class="mb-4">
-                    <label for="logo" class="block text-black font-medium">Club Logo URL</label>
-                    <input type="url" id="logo" name="logo" class="w-full p-1 border border-gray-300 rounded" required>
-                    <p id="logoError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid url.</p>
-                </div>
-                <div class="mb-4">
                     <label for="rating" class="block text-black font-medium">Rating</label>
                     <input value="<?php echo $p_rating; ?>" type="number" id="rating" name="rating" min="0" max="100" class="w-full p-1 border border-gray-300 rounded" required>
                     <p id="ratingError" class="text-red-500 text-xs mt-1 hidden">Please enter a valid rating.</p>
