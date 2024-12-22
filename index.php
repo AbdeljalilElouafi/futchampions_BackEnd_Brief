@@ -171,8 +171,8 @@ $clubs = display_clubs();
                                             <td class='w-1/8 text-left py-3 px-4'><?=($row['player_id'])?></td>
                                             <td class='w-1/8 text-left py-3 px-4'><?=($row['player_name'])?></td>
                                             <td class='w-1/8 text-left py-3 px-4'>
-                                            <img src="assets/img/25_120.webp"
-                                            class="rounded-full h-12 w-12"> 
+                                            <img src="assets/img/playerIMG/<?= ($row['photo_url']) ?>" alt="Player Photo"
+                                                      class="rounded-full h-15 w-15">
                                             </td>
                                             <td class='text-left py-3 px-4'><?=($row['player_position'])?></td>
                                             <td class='text-left py-3 px-4'><?=($row['rating'])?></td>

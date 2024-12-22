@@ -1,10 +1,11 @@
 <?php
 
-require_once __DIR__ . '/config/db.php';
+ require_once __DIR__ . '/config/db.php';
 
-$conn = connect_db();
+ $conn = connect_db();
 
 
+ $p_photo="";
  $p_name="";
  $p_position="";
  $p_rating="";
@@ -21,6 +22,14 @@ $conn = connect_db();
  $successMessage="";
 
  if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+
+    $p_photo=  $_FILES['photo']['name'];
+    $temp_file = $_FILES['photo']['tmp_name'];
+    $folder = "assets/img/playerIMG/".$p_photo;
+    move_uploaded_file($temp_file, $folder);
+
  $p_name= $_POST["name"];
  $p_position= $_POST["position"];
  $p_rating= $_POST["rating"];
@@ -33,14 +42,15 @@ $conn = connect_db();
 
 
    do {
-    if ( empty($p_name) || empty($p_position) || empty($p_rating) || empty($p_pace) || empty( $p_shooting) || empty( $p_passing) || empty( $p_dribbling) || empty( $p_defending)|| empty( $p_physical) ){
+    if ( empty($p_name) || empty($p_photo) || empty($p_position) || empty($p_rating) || empty($p_pace) || empty( $p_shooting) || empty( $p_passing) || empty( $p_dribbling) || empty( $p_defending)|| empty( $p_physical) ){
         $errorMessage="All the fields are required!";
         break;
     }
 
 
-    $sql = "INSERT INTO players (player_name, player_position, rating, pace, shooting, passing, dribbling, defending, physical)
-        VALUES ('$p_name', '$p_position', '$p_rating', '$p_pace', '$p_shooting', '$p_passing', '$p_dribbling', '$p_defending', '$p_physical');";
+
+    $sql = "INSERT INTO players (player_name, photo_url , player_position, rating, pace, shooting, passing, dribbling, defending, physical)
+        VALUES ('$p_name', '$folder' , '$p_position', '$p_rating', '$p_pace', '$p_shooting', '$p_passing', '$p_dribbling', '$p_defending', '$p_physical');";
 
     $result = $conn->query($sql);
 
@@ -50,6 +60,7 @@ $conn = connect_db();
     }
 
 
+    $p_photo="";
     $p_name="";
     $p_position="";
     $p_rating="";
@@ -203,7 +214,7 @@ $conn = connect_db();
              <div class="flex flex-col gap-y-20">
 
             <div class="form-container w-1/3 mx-auto max-h-screen overflow-y-scroll bg-gradiant-to-r bg-form to-transparent p-8 rounded shadow-xl">
-            <form id="playerForm" method="post">
+            <form id="playerForm" method="post" enctype="multipart/form-data">
                 <!-- Name, Photo, Nationality, Flag, Club, Logo, Rating Inputs -->
                 <div class="mb-4">
                     <label for="name" class="block text-black font-medium">Name</label>
@@ -212,7 +223,7 @@ $conn = connect_db();
                 </div>
                 <div class="mb-4">
                     <label for="photo" class="block text-black font-medium">Player Photo</label>
-                    <input id="photo" name="photo" class="w-full p-1 border border-gray-300 rounded" type="file" accept=".jpg, .png, .jpeg, .webp" required />
+                    <input  id="photo" name="photo" class="w-full p-1 border border-gray-300 rounded" type="file" accept=".jpg, .png, .jpeg, .webp" required />
                     <p id="photoError" class="text-red-500 text-xs mt-1 hidden">Please choose a photo</p>
                 </div>
                 <div class="mb-4">
