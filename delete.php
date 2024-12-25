@@ -1,18 +1,16 @@
 <?php
+require_once __DIR__ . '/config/db.php';
+
+$conn = connect_db();
+
+
+
 if(isset($_GET["id"])) {
     $player_id = $_GET["id"];
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "futchampions_db";
-
- // Create connection
- $conn = mysqli_connect($servername, $username, $password, $database);
 
  $sql = "DELETE FROM players WHERE player_id=$player_id";
  $conn->query($sql);
-
 
 
 }

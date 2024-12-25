@@ -1,101 +1,98 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "futchampions_db";
+    require_once __DIR__ . '/config/db.php';
 
- // Create connection
- $conn = mysqli_connect($servername, $username, $password, $database);
-
-$p_name="";
-$p_position="";
-$p_rating="";
-$p_pace="";
-$p_shooting="";
-$p_passing="";
-$p_dribbling="";
-$p_defending="";
-$p_physical="";
+    $conn = connect_db();
 
 
-$errorMessage="";
-$successMessage="";
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-
-    if ( !isset($_GET["id"])){
-        header("location: /futchampions_BackEnd_Brief/index.php");
-        exit;
-    }
-
-    $player_id = $_GET["id"];
-
-    $sql = "SELECT * FROM players WHERE player_id=$player_id";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
+    $p_name="";
+    $p_position="";
+    $p_rating="";
+    $p_pace="";
+    $p_shooting="";
+    $p_passing="";
+    $p_dribbling="";
+    $p_defending="";
+    $p_physical="";
 
 
-    if (!$row) {
-        header ("location: /futchampions_BackEnd_Brief/index.php");
-        exit;
-    }
+    $errorMessage="";
+    $successMessage="";
 
-    $p_name= $row["player_name"];
-    $p_position= $row["player_position"];
-    $p_rating= $row["rating"];
-    $p_pace= $row["pace"];
-    $p_shooting= $row["shooting"];
-    $p_passing= $row["passing"];
-    $p_dribbling= $row["dribbling"];
-    $p_defending= $row["defending"];
-    $p_physical= $row["physical"];
-    
-   
-    
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-
-} 
-else {
-
-    $player_id= $_POST["id"];
-    $p_name= $_POST["name"];
-    $p_position= $_POST["position"];
-    $p_rating= $_POST["rating"];
-    $p_pace= $_POST["pace"];
-    $p_shooting= $_POST["shooting"];
-    $p_passing= $_POST["passing"];
-    $p_dribbling= $_POST["dribbling"];
-    $p_defending= $_POST["defending"];
-    $p_physical= $_POST["physical"];
-
-    do {
-
-        if ( empty($p_name) || empty($p_position) || empty($p_rating) || empty($p_pace) || empty( $p_shooting) || empty( $p_passing) || empty( $p_dribbling) || empty( $p_defending)|| empty( $p_physical)){
-            $errorMessage="All the fields are required!";
-            break;
+        if ( !isset($_GET["id"])){
+            header("location: /futchampions_BackEnd_Brief/index.php");
+            exit;
         }
 
-        $sql = "UPDATE players " . 
-               "SET player_name ='$p_name', player_position = '$p_position', rating = '$p_rating', pace = '$p_pace', shooting = '$p_shooting', passing = '$p_passing', dribbling = '$p_dribbling', defending = '$p_defending', physical = '$p_physical' " . 
-               "WHERE player_id = $player_id";
+        $player_id = $_GET["id"];
 
+        $sql = "SELECT * FROM players WHERE player_id=$player_id";
         $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
 
 
-        if( !$result) {
-            $errorMessage= "Invalid query: " . $conn->error;
-            break;
+        if (!$row) {
+            header ("location: /futchampions_BackEnd_Brief/index.php");
+            exit;
         }
 
-        $successMessage = "Player updated successfully";
+        $p_name= $row["player_name"];
+        $p_position= $row["player_position"];
+        $p_rating= $row["rating"];
+        $p_pace= $row["pace"];
+        $p_shooting= $row["shooting"];
+        $p_passing= $row["passing"];
+        $p_dribbling= $row["dribbling"];
+        $p_defending= $row["defending"];
+        $p_physical= $row["physical"];
+        
+    
+        
 
-        header("location: /futchampions_BackEnd_Brief/index.php");
-        exit;
 
-    } while (false);
+    } 
+    else {
 
-}
+        $player_id= $_POST["id"];
+        $p_name= $_POST["name"];
+        $p_position= $_POST["position"];
+        $p_rating= $_POST["rating"];
+        $p_pace= $_POST["pace"];
+        $p_shooting= $_POST["shooting"];
+        $p_passing= $_POST["passing"];
+        $p_dribbling= $_POST["dribbling"];
+        $p_defending= $_POST["defending"];
+        $p_physical= $_POST["physical"];
+
+        do {
+
+            if ( empty($p_name) || empty($p_position) || empty($p_rating) || empty($p_pace) || empty( $p_shooting) || empty( $p_passing) || empty( $p_dribbling) || empty( $p_defending)|| empty( $p_physical)){
+                $errorMessage="All the fields are required!";
+                break;
+            }
+
+            $sql = "UPDATE players " . 
+                "SET player_name ='$p_name', player_position = '$p_position', rating = '$p_rating', pace = '$p_pace', shooting = '$p_shooting', passing = '$p_passing', dribbling = '$p_dribbling', defending = '$p_defending', physical = '$p_physical' " . 
+                "WHERE player_id = $player_id";
+
+            $result = $conn->query($sql);
+
+
+            if( !$result) {
+                $errorMessage= "Invalid query: " . $conn->error;
+                break;
+            }
+
+            $successMessage = "Player updated successfully";
+
+            header("location: /futchampions_BackEnd_Brief/index.php");
+            exit;
+
+        } while (false);
+
+    }
 
 ?>
 
